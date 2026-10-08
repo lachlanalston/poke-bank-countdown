@@ -20,6 +20,7 @@
 
   --font-display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
   --font-util:    "Space Mono", ui-monospace, monospace;
+  --font-body:    "Nunito Sans", system-ui, -apple-system, sans-serif;  /* FAQ prose only */
 
   /* Every size is clamped against BOTH axes: the width term wins on a
      phone, the height term wins on a short landscape window. */
@@ -29,10 +30,15 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html, body {
-  height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;              /* no scrolling, anywhere */
+}
+
+/* The countdown page opts into the one-screen lock; the FAQ is a document
+   and scrolls like one. */
+html:has(body.lock), body.lock {
+  height: 100%;
+  overflow: hidden;
   overscroll-behavior: none;
 }
 
@@ -365,3 +371,117 @@ a:hover { color: var(--paper); }
 @media (prefers-reduced-motion: reduce) {
   .pivot { animation: none; }
 }
+
+
+/* ───────────────────────────────────────────────────────────────
+   The FAQ document. Same vault, but it scrolls: this is the page
+   that carries the answers as text a crawler can actually read.
+   ─────────────────────────────────────────────────────────────── */
+
+.doc {
+  max-width: 68ch;
+  margin-inline: auto;
+  padding:
+    clamp(28px, 6vmin, 72px)
+    calc(env(safe-area-inset-right) + clamp(18px, 4vmin, 32px))
+    clamp(48px, 10vmin, 96px)
+    calc(env(safe-area-inset-left) + clamp(18px, 4vmin, 32px));
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.7vw, 1.1rem);
+  line-height: 1.65;
+}
+
+.doc__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--steel);
+}
+.doc__back:hover { color: var(--coin); }
+.doc__back .bar__pip { width: 1.1em; height: 1.1em; }
+
+.doc h1 {
+  margin: clamp(22px, 4vmin, 38px) 0 0.3em;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 7vw, 3rem);
+  line-height: 1.05;
+  color: var(--paper);
+}
+
+.doc__standfirst {
+  margin: 0 0 clamp(26px, 5vmin, 44px);
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 3vw, 1.15rem);
+  color: var(--bank-sky);
+}
+.doc__standfirst strong { color: var(--coin); font-weight: 700; }
+
+.doc h2 {
+  margin: clamp(30px, 5vmin, 48px) 0 0.5em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.15rem, 4vw, 1.45rem);
+  line-height: 1.2;
+  color: var(--paper);
+  padding-top: clamp(18px, 3vmin, 26px);
+  border-top: 1px solid rgba(111, 144, 180, 0.26);
+}
+
+.doc h2:first-of-type { border-top: 0; padding-top: 0; }
+
+.doc p { margin: 0 0 1em; }
+.doc p:last-child { margin-bottom: 0; }
+
+.doc ol, .doc ul { margin: 0 0 1em; padding-left: 1.3em; }
+.doc li { margin-bottom: 0.5em; }
+.doc li::marker { color: var(--coin); }
+
+/* the timezone table: the answer people actually arrive looking for */
+.zones {
+  width: 100%;
+  margin: 0 0 1em;
+  border-collapse: collapse;
+  font-size: clamp(0.82rem, 2.4vw, 0.92rem);
+}
+.zones caption {
+  text-align: left;
+  padding-bottom: 0.7em;
+  color: var(--steel);
+  font-size: 0.82em;
+}
+.zones th, .zones td {
+  text-align: left;
+  padding: 0.55em 0.7em 0.55em 0;
+  border-bottom: 1px solid rgba(111, 144, 180, 0.2);
+  vertical-align: top;
+}
+.zones thead th {
+  font-size: 0.74em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--steel);
+  font-weight: 400;
+}
+.zones tbody th { font-weight: 400; color: var(--bank-sky); }
+.zones td {
+  color: var(--paper);
+  font-family: var(--font-util);
+  font-variant-numeric: tabular-nums;
+}
+.zones tr.is-key td, .zones tr.is-key th { color: var(--coin); }
+
+.doc__note {
+  margin: clamp(30px, 5vmin, 48px) 0 0;
+  padding-top: clamp(18px, 3vmin, 26px);
+  border-top: 1px solid rgba(111, 144, 180, 0.26);
+  font-size: 0.85rem;
+  color: var(--steel);
+}
+
+/* the countdown page footer link across to here */
+.meta a { white-space: nowrap; }
