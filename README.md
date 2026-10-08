@@ -32,7 +32,22 @@ Push to a GitHub repo, then **Settings → Pages → Source: Deploy from a branc
 
 ## SEO
 
-The page carries a canonical URL, Open Graph and Twitter card tags, and a JSON-LD `@graph` with `WebSite`, `WebPage` and a four-question `FAQPage`. The FAQ answers are the ones people actually search for — when it shuts down, what happens to Pokémon left behind, how to move them, whether Bank can still be downloaded — which is what search engines and LLM crawlers lift.
+The page carries a canonical URL, Open Graph and Twitter card tags, and a JSON-LD `@graph` with `WebSite`, `WebPage` and a ten-question `FAQPage` — the queries people actually type:
+
+| Query shape | Covered by |
+|---|---|
+| when does Pokémon Bank shut down | Q1 |
+| Pokémon Bank shutdown time EST / PST / GMT / JST | Q2, with every major zone spelled out |
+| how long until Pokémon Bank closes | Q3 |
+| what happens to Pokémon left in Bank | Q4 |
+| how to transfer Bank to HOME | Q5 |
+| do I need HOME Premium | Q6 |
+| can I move Pokémon back to Bank | Q7 |
+| is Poké Transporter shutting down | Q8 |
+| can I still download Pokémon Bank | Q9 |
+| what is Pokémon Bank | Q10 |
+
+Note that North America is a day behind: 2:00 pm AEDT on Friday 26 February is Thursday 25 February evening in US timezones, which Q2 states explicitly. Metadata also carries unaccented "Pokemon" spellings, since that is how most people type it.
 
 `og.png` deliberately shows the **date**, not the live countdown, so a cached social preview never goes stale. Regenerate it after a design change:
 
