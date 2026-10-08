@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pokémon Bank closes in… — countdown to end of service</title>
+<meta name="description" content="Live countdown to Pokémon Bank and Poké Transporter end of service on Friday 26 February 2027, 2:00 pm AEDT. Move your Pokémon to Pokémon HOME before the vault shuts.">
+<meta name="theme-color" content="#071d33">
+<meta property="og:title" content="Pokémon Bank closes in…">
+<meta property="og:description" content="Pokémon Bank and Poké Transporter end service on 26 February 2027. Get your Pokémon out.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23f0b429'/><path d='M2 16h28' stroke='%23071d33' stroke-width='3'/><circle cx='16' cy='16' r='5' fill='%23071d33'/><circle cx='16' cy='16' r='2.5' fill='%23f3f7fb'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito+Sans:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<main>
+
+  <!-- ░░ hero: the vault door ░░ -->
+  <section class="vault" aria-labelledby="hero-title">
+    <div class="vault__rings" aria-hidden="true"></div>
+
+    <p class="eyebrow">Nintendo 3DS &middot; end of service</p>
+    <h1 id="hero-title">Pokémon&nbsp;Bank<br><span class="hero__verb">closes in</span></h1>
+
+    <!-- signature: four deposit boxes, gold slot band, digits tumbling toward zero -->
+    <div class="boxes" id="boxes" aria-hidden="true">
+      <div class="box">
+        <span class="box__digits" id="days">—</span>
+        <span class="box__label">days</span>
+      </div>
+      <div class="box">
+        <span class="box__digits" id="hours">—</span>
+        <span class="box__label">hours</span>
+      </div>
+      <div class="box">
+        <span class="box__digits" id="minutes">—</span>
+        <span class="box__label">minutes</span>
+      </div>
+      <div class="box box--seconds">
+        <span class="box__digits" id="seconds">—</span>
+        <span class="box__label">seconds</span>
+      </div>
+    </div>
+    <p class="sr-only" id="countdown-sr" role="status" aria-live="polite">Loading the countdown.</p>
+
+    <p class="deadline">
+      <strong>Friday 26 February 2027, 2:00&nbsp;pm AEDT</strong>
+      <span class="deadline__local" id="local-time"></span>
+    </p>
+  </section>
+
+  <!-- ░░ the one-way trip out ░░ -->
+  <section class="rail" aria-labelledby="rail-title">
+    <h2 class="rail__title" id="rail-title">One way out</h2>
+    <div class="rail__track">
+      <div class="node node--from">
+        <span class="node__name">Pokémon Bank</span>
+        <span class="node__meta">Nintendo 3DS</span>
+      </div>
+      <div class="rail__line" aria-hidden="true"><span class="rail__ball"></span></div>
+      <div class="node node--to">
+        <span class="node__name">Pokémon HOME</span>
+        <span class="node__meta">Nintendo Switch</span>
+      </div>
+    </div>
+    <p class="rail__note">Transfers only run in that direction, and only until the service ends. After that, Pokémon left in Bank stay in Bank.</p>
+  </section>
+
+  <!-- ░░ do this, in this order ░░ -->
+  <section class="steps" aria-labelledby="steps-title">
+    <h2 id="steps-title">Get your Pokémon out</h2>
+    <ol class="steps__list">
+      <li class="step">
+        <h3 class="step__name">Open Pokémon Bank on your 3DS</h3>
+        <p>Charge the console and connect it to the internet. Bank is no longer available to download, so you need it already installed. Use Poké Transporter first if you still have Pokémon sitting in a game cartridge or Virtual Console title.</p>
+      </li>
+      <li class="step">
+        <h3 class="step__name">Move everything into Pokémon HOME</h3>
+        <p>Link the same Nintendo Account on both consoles, then move your boxes across. Transferring from Bank needs a Pokémon HOME Premium Plan, and a Pokémon that leaves Bank cannot go back.</p>
+      </li>
+      <li class="step">
+        <h3 class="step__name">Sweep the empty boxes</h3>
+        <p>Check every Bank box and the Poké Transporter box before you put the 3DS away. Anything still there on 26 February 2027 stops being reachable.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ░░ the receipt ░░ -->
+  <section class="facts" aria-labelledby="facts-title">
+    <h2 id="facts-title">The details</h2>
+    <dl class="facts__list">
+      <div class="fact">
+        <dt>Service ends</dt>
+        <dd>Friday 26 February 2027, 2:00&nbsp;pm AEDT</dd>
+      </div>
+      <div class="fact">
+        <dt>What stops</dt>
+        <dd>Pokémon Bank, Poké Transporter, and Bank&nbsp;→&nbsp;HOME transfers</dd>
+      </div>
+      <div class="fact">
+        <dt>Download</dt>
+        <dd>Pokémon Bank is not currently available for download</dd>
+      </div>
+      <div class="fact">
+        <dt>Where they go</dt>
+        <dd>Pokémon HOME on Nintendo Switch, with a Premium Plan</dd>
+      </div>
+    </dl>
+    <p class="facts__source">
+      Dates from Nintendo&nbsp;Australia:
+      <a href="https://www.nintendo.com/au/support/articles/pokemon-bank-end-of-service/" rel="noopener">Pokémon Bank end of service</a>
+    </p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Fan-made countdown. Not affiliated with Nintendo, The Pokémon Company, or Game Freak. Pokémon, Pokémon Bank, Poké Transporter, and Pokémon HOME are their trademarks.</p>
+  <p class="footer__tz">Countdown runs on your device clock against 2027-02-26 03:00 UTC.</p>
+</footer>
+
+<script src="countdown.js"></script>
+</body>
+</html>
