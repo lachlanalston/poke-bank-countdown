@@ -17,6 +17,17 @@ const el = {
 
 const pad = (n) => String(n).padStart(2, '0');
 
+// The tab is narrow, so the title leads with the single useful number and
+// keeps the name short enough to survive truncation: "140d · Pokémon Bank".
+const TITLE = 'Pokémon Bank';
+let lastTitleLeft = null;
+
+function setTitle(left) {
+  if (left === lastTitleLeft) return;
+  lastTitleLeft = left;
+  document.title = left ? `${left} · ${TITLE}` : TITLE;
+}
+
 // Show the deadline in the visitor's own timezone, so nobody has to do
 // timezone maths on the one date that matters. Australians already have
 // the AEDT line above, so tell them that instead of repeating it.
@@ -51,6 +62,7 @@ function tick() {
     el.vault.classList.add('is-ended');
     el.verb.textContent = 'has closed';
     el.sr.textContent = 'Pokémon Bank service has ended.';
+    setTitle('Closed');
     return false; // stop the loop
   }
 
@@ -67,6 +79,9 @@ function tick() {
 
   // Last 24 hours: the vault turns red.
   el.boxes.classList.toggle('is-urgent', days < 1);
+
+  // Coarsest unit still above zero, so the title changes at most once a minute.
+  setTitle(days > 0 ? `${days}d` : hours > 0 ? `${hours}h` : `${minutes}m`);
 
   // Announce once a minute, not once a second — a per-second live region
   // makes a screen reader unusable.
