@@ -39,7 +39,10 @@ Then update the two human-readable copies of the date in `index.html` (hero `.de
 
 ## Notes
 
+- One screen, no scrolling: `.screen` is a `100dvh` grid of bar / stage / footer, and every type size is clamped against both `vw` and `vh` so it holds on a phone in landscape and on a 1920-wide desktop.
+- The Poké Ball is the vault door. Its seam runs along the deposit row and its button sits *in* the row, between hours and minutes.
 - Dark, single-theme by design — the page is the inside of the vault.
-- Responsive to phone width, keyboard focus visible, `prefers-reduced-motion` respected.
+- Grid tracks are `max-content`, not `auto`: `align-content: stretch` inflates `auto` tracks.
+- Responsive from 320px up, keyboard focus visible, `prefers-reduced-motion` respected.
 - The live region announces once a minute rather than once a second.
 - Fan-made. Not affiliated with Nintendo, The Pokémon Company, or Game Freak.

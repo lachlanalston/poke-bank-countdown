@@ -18,14 +18,22 @@ const el = {
 const pad = (n) => String(n).padStart(2, '0');
 
 // Show the deadline in the visitor's own timezone, so nobody has to do
-// timezone maths on the one date that matters.
+// timezone maths on the one date that matters. Australians already have
+// the AEDT line above, so tell them that instead of repeating it.
 function renderLocalTime() {
+  const opts = {
+    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
+    hour: 'numeric', minute: '2-digit',
+  };
   try {
-    const fmt = new Intl.DateTimeFormat(undefined, {
-      weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
-      hour: 'numeric', minute: '2-digit', timeZoneName: 'short',
-    });
-    el.local.textContent = `Where you are: ${fmt.format(new Date(DEADLINE))}`;
+    const target = new Date(DEADLINE);
+    const here = new Intl.DateTimeFormat('en-AU', opts).format(target);
+    const sydney = new Intl.DateTimeFormat('en-AU', { ...opts, timeZone: 'Australia/Sydney' })
+      .format(target);
+
+    el.local.textContent = here === sydney
+      ? 'Same time on your clock.'
+      : `Where you are: ${new Intl.DateTimeFormat(undefined, { ...opts, timeZoneName: 'short' }).format(target)}`;
   } catch {
     el.local.textContent = '';
   }
