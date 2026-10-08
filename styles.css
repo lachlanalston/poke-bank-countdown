@@ -73,7 +73,7 @@ body {
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-  width: min(90vmin, 740px);
+  width: min(82vmin, 700px);
   aspect-ratio: 1;
   border-radius: 50%;
   z-index: -1;            /* behind the headline, above the dot wash */
@@ -106,12 +106,19 @@ body {
     0  1px 0 rgba(207, 232, 251, 0.34);
 }
 
-/* the ball's centre button, sitting in the middle of the deposit row */
+/* the hub: a dedicated slot for the ball's centre button, directly
+   above the deposit row, so the seam reads without crowding the boxes */
+.hub {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+/* the ball's centre button */
 .pivot {
   position: relative;
   z-index: 1;
-  align-self: center;
-  width: clamp(30px, 8.5vmin, 78px);
+  width: clamp(34px, 9vmin, 82px);
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(circle at 50% 38%, #ffd470 0%, var(--coin) 42%, var(--coin-dim) 100%);
@@ -202,13 +209,11 @@ body {
 /* ── the deposit boxes ──────────────────────────────────────── */
 
 .boxes {
-  position: relative;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) auto repeat(2, minmax(0, 1fr));
-  align-items: stretch;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(5px, 1.3vmin, 14px);
   width: 100%;
-  max-width: min(100%, 820px);
+  max-width: min(100%, 700px);
 }
 
 .box {
@@ -238,7 +243,7 @@ body {
   font-family: var(--font-display);
   font-weight: 800;
   line-height: 1;
-  font-size: clamp(1.3rem, min(8vw, 6.6vh), 3.9rem);
+  font-size: clamp(1.5rem, min(11.5vw, 8vh), 4.4rem);
   color: var(--paper);
   font-variant-numeric: tabular-nums;
 }
@@ -252,7 +257,7 @@ body {
   color: var(--steel);
 }
 
-.box--seconds .box__digits { color: var(--coin); }
+.box--live .box__digits { color: var(--coin); }
 
 /* final day: the whole vault goes red */
 .boxes.is-urgent .box__digits { color: var(--ball-red); }
@@ -333,10 +338,11 @@ a:hover { color: var(--paper); }
     text-align: left;
   }
   #hero-title     { grid-column: 1; grid-row: 1; font-size: clamp(1.4rem, 4.6vw, 2.6rem); }
-  .boxes          { grid-column: 2; grid-row: 1; max-width: none; }
+  .hub            { grid-column: 2; grid-row: 1; }
+  .boxes          { grid-column: 2; grid-row: 2; max-width: none; }
   .deadline       { grid-column: 1; grid-row: 2; }
   .deadline strong { font-size: clamp(0.72rem, 1.9vw, 1.05rem); }
-  .pokeball       { width: min(104vmin, 560px); }
+  .pokeball       { width: min(92vmin, 470px); }
 }
 
 /* narrow screens: the console name goes, the warning stays */

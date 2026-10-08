@@ -7,7 +7,6 @@ const el = {
   days: document.getElementById('days'),
   hours: document.getElementById('hours'),
   minutes: document.getElementById('minutes'),
-  seconds: document.getElementById('seconds'),
   boxes: document.getElementById('boxes'),
   sr: document.getElementById('countdown-sr'),
   local: document.getElementById('local-time'),
@@ -29,8 +28,8 @@ function setTitle(left) {
 }
 
 // Show the deadline in the visitor's own timezone, so nobody has to do
-// timezone maths on the one date that matters. Australians already have
-// the AEDT line above, so tell them that instead of repeating it.
+// timezone maths on the one date that matters. Australians already read it
+// on the line above, so they get nothing rather than a repeat.
 function renderLocalTime() {
   const opts = {
     weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
@@ -43,7 +42,7 @@ function renderLocalTime() {
       .format(target);
 
     el.local.textContent = here === sydney
-      ? 'Same time on your clock.'
+      ? ''
       : `Where you are: ${new Intl.DateTimeFormat(undefined, { ...opts, timeZoneName: 'short' }).format(target)}`;
   } catch {
     el.local.textContent = '';
@@ -56,8 +55,7 @@ function tick() {
   const remaining = DEADLINE - Date.now();
 
   if (remaining <= 0) {
-    el.days.textContent = el.hours.textContent = '00';
-    el.minutes.textContent = el.seconds.textContent = '00';
+    el.days.textContent = el.hours.textContent = el.minutes.textContent = '00';
     el.boxes.classList.add('is-urgent');
     el.vault.classList.add('is-ended');
     el.verb.textContent = 'has closed';
@@ -70,12 +68,9 @@ function tick() {
   const days = Math.floor(totalSeconds / 86400);
   const hours = Math.floor((totalSeconds % 86400) / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
-
   el.days.textContent = String(days);
   el.hours.textContent = pad(hours);
   el.minutes.textContent = pad(minutes);
-  el.seconds.textContent = pad(seconds);
 
   // Last 24 hours: the vault turns red.
   el.boxes.classList.toggle('is-urgent', days < 1);
