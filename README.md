@@ -16,6 +16,7 @@ Source for the date: [Nintendo Australia — Pokémon Bank end of service](https
 | `robots.txt` | Opens the site to search and AI crawlers, points at the sitemap |
 | `sitemap.xml` | Single-URL sitemap |
 | `og.png` | 1200x630 social card, rendered from the page itself |
+| `faq.html` | The answers as crawlable text — the page that can actually rank |
 
 ## Run locally
 
@@ -46,6 +47,8 @@ The page carries a canonical URL, Open Graph and Twitter card tags, and a JSON-L
 | is Poké Transporter shutting down | Q8 |
 | can I still download Pokémon Bank | Q9 |
 | what is Pokémon Bank | Q10 |
+
+`faq.html` carries the same ten answers as visible text, which is what search engines weigh; the countdown page's markup alone cannot rank it, because the body is about 40 words. Every claim on the FAQ is sourced to Nintendo AU, Nintendo US, the official Pokémon HOME plan comparison, or the Pokémon Bank no-cost announcement, all linked at the foot of that page.
 
 Note that North America is a day behind: 2:00 pm AEDT on Friday 26 February is Thursday 25 February evening in US timezones, which Q2 states explicitly. Metadata also carries unaccented "Pokemon" spellings, since that is how most people type it.
 
